@@ -8,11 +8,11 @@ const ctrlReviews = require("../controllers/reviews");
 router
   .route("/locations")
   .get(ctrlLocations.locationsListByDistance)
-  .post(ctrlLocations.locationsCreate);
+  .post(ctrlLocations.locationsCreate); // ok
 
 router
   .route("/locations/:locationid")
-  .get(ctrlLocations.locationsReadOne)
+  .get(ctrlLocations.locationsReadOne) // ok
   .put(ctrlLocations.locationsUpdateOne)
   .delete(ctrlLocations.locationsDeleteOne);
 
