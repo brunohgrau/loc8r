@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const dbURI = "mongodb://localhost/Loc8r";
 const readline = require("readline");
-require("/locations");
+require("./locations");
 // Readline
 
 if (process.platform === "win32") {
