@@ -13,7 +13,7 @@ router
 router
   .route("/locations/:locationid")
   .get(ctrlLocations.locationsReadOne) // ok
-  .put(ctrlLocations.locationsUpdateOne)
+  .put(ctrlLocations.locationsUpdateOne) // ok
   .delete(ctrlLocations.locationsDeleteOne);
 
 // reviews

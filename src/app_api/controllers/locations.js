@@ -85,7 +85,7 @@ const locationsReadOne = async (req, res) => {
   }
 };
 
-async function locationsUpdateOne(req, res) {
+const locationsUpdateOne = async (req, res) => {
   try {
     if (!req.params.locationid) {
       return res
@@ -127,10 +127,27 @@ async function locationsUpdateOne(req, res) {
   } catch (err) {
     res.status(400).json(err);
   }
-}
+};
 
-const locationsDeleteOne = (req, res) => {
-  res.status(200).json({ status: "success" });
+const locationsDeleteOne = async (req, res) => {
+  try {
+    const { locationid } = req.params;
+
+    if (!locationid) {
+      throw new Error("No location ID provided");
+    }
+
+    const location = await Loc.findByIdAndDelete(locationid);
+
+    if (!location) {
+      return res.status(404).json({ message: "Location not found" });
+    }
+
+    res.status(204).json(null);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Internal server error" });
+  }
 };
 
 module.exports = {
